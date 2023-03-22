@@ -1,64 +1,192 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+Airbnb
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Introduzione
+Airbnb è una web app che permette di trovare e gestire l’affitto di appartamenti.
 
-## About Laravel
+I proprietari di appartamenti, registrandosi a Airbnb, possono inserire le informazioni delle loro proprietà e decidere se sponsorizzarle per avere una posizione evidenziata nelle ricerche e in home page.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Gli utenti interessati ad affittare, senza registrazione, possono cercare e visualizzare gli appartamenti. Una volta scelto l’appartamento di interesse, possono inviare un messaggio al proprietario tramite la piattaforma, per chiedere maggiori dettagli.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Tipi di Utenti
 
-## Learning Laravel
+Definiamo i seguenti tipi di utente che possono utilizzare Airbnb:
+- Utente registrato (UR): un utente che ha effettuato la registrazione;
+- Utente registrato con appartamento (URA): un utente che ha effettuato la registrazione e ha inserito nel sistema almeno un appartamento;
+- Utente interessato (UI): un qualsiasi utente del sito, non registrato;
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Lista delle pagine 
 
-## Laravel Sponsors
+Homepage: 
+Offre la possibilità di ricercare gli appartamenti. 
+Inoltre permette un accesso veloce alle pagine dettaglio degli appartamenti in evidenza.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Pagina di Ricerca Avanzata:
+Permette di visualizzare i risultati di ricerca, ogni risultato permetterà l’accesso alla pagina di dettaglio dell’appartamento.
+Inoltre è possibile raffinare la ricerca senza il refresh della pagina, applicando dei filtri.
 
-### Premium Partners
+Pagina Dettaglio Appartamento Pubblica: 
+Permette di visualizzare tutti i dettagli disponibili per un appartamento e permette l’invio di un messaggio al proprietario.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Dashboard Utente Registrato:
+Permette l’inserimento di un nuovo appartamento e l’accesso ai propri appartamenti.
 
-## Contributing
+Pagina Lista Appartamenti:
+Da qui è possibile accedere alla modifica e cancellazione dei propri appartamenti, e accedere ai relativi messaggi e statistiche.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Pagina Lista Messaggi Singolo Appartamento.
 
-## Code of Conduct
+Pagina Sponsorizzazione: 
+Tramite questo pannello è possibile sponsorizzare un singolo appartamento alla volta, selezionando il tipo di promozione desiderata e inserendo i dettagli della carta di credito.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Pagina Statistiche Singolo Appartamento: 
+Permette di visualizzare le statistiche dell’appartamento selezionato. 
+Nello specifico i grafici mostrano il numero di visualizzazioni e il numero di messaggi relativi all’appartamento per mesi/anni.
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Requisiti Tecnici
 
-## License
+- (RT1) Client-side Validation:
+Tutti gli input inseriti dall’utente sono controllati client-side (oltre che server-side) per un controllo di veridicità (es. il numero di stanze di un appartamento deve essere positivo).
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- (RT2) Salvataggio di informazioni geografiche:
+I dati riguardanti l’ubicazione degli appartamenti sono salvati sul database con latitudine e longitudine. 
+Per ottenere latitudine e longitudine a partire da un indirizzo e allo stesso modo visualizzare il punto sulla mappa, è utilizzato TomTom: https://developer.tomtom.com/
+
+-(RT3) Sistema di Pagamento:
+Il sistema di pagamento utilizzato è Braintree: https://www.braintreepayments.com/ 
+Il sistema permette agli sviluppatori di simulare pagamenti senza essere approvati formalmente e senza utilizzare vere carte di credito.
+
+- (RT4) Il sito è responsive:
+Il sito è correttamente visibile da desktop e da smartphone.
+
+- (RT5) La ricerca degli appartamenti nella pagina dedicata e l’applicazione dei filtri avvengono senza il refresh della pagina.
+
+
+Requisiti Funzionali
+La piattaforma soddisfa i seguenti requisiti funzionali (RF) che vengono dettagliati nelle pagine successive:
+
+(RF1) Permettere ai proprietari di appartamento di registrarsi alla piattaforma
+(RF2) Permettere ai proprietari di appartamento registrati di aggiungere un appartamento alla piattaforma
+(RF3) Permette ai visitatori di ricercare una appartamento
+(RF4) Permettere ai visitatori di vedere i dettagli di un appartamento
+(RF5) Permettere ai visitatori di scrivere al proprietario di un appartamento per chiedere informazioni
+(RF6) Permettere ai proprietari di appartamento registrati di vedere i messaggi ricevuti
+(RF8) Permettere ai proprietari di appartamento registrati di sponsorizzare un appartamento
+(RF7) Permettere ai proprietari di appartamento registrati di vedere statistiche dei propri appartamenti
+
+
+(RF1) Permettere ai proprietari di appartamento di registrarsi alla piattaforma
+
+Visibilità: UI
+Descrizione: 
+L’applicazione permette ai proprietari di appartamento di registrarsi alla piattaforma e creare un profilo.
+Le informazioni che l’utente può inserire sono:
+- Email *
+- Password *
+- Nome
+- Cognome
+- Data di Nascita
+Sono contrassegnati con * i dati obbligatori.
+
+Email e password sono utilizzati dall’utente per fare il login alla piattaforma.
+Non è previsto un pannello per modificare le informazioni inserite una volta registrato.
+I form devono rispettare RT1.
+
+Risultato: Un nuovo utente viene creato nel sistema
+Eccezioni: Esiste già nel sistema un utente con l’email inserita
+
+
+(RF2) Permettere ai proprietari di appartamento registrati di aggiungere un appartamento alla piattaforma.
+
+Visibilità: UR / URA
+Descrizione: Un proprietario registrato ha la possibilità di inserire uno o più appartamenti all’interno del sistema. 
+Per inserire un nuovo appartamento il proprietario deve inserire le seguenti informazioni:
+Titolo riepilogativo che descriva l’appartamento:
+- Numero di stanze
+- Numero di letti
+- Numero di bagni
+- Metri quadrati
+- Indirizzo completo (con latitudine e longitudine)
+- Immagine rappresentativa dell’appartamento
+- Uno o più servizi aggiuntivi: WiFi, Posto Macchina, Piscina, Portineria, Sauna, Vista Mare…
+- Visibile si/no
+
+È possibile modificare le informazioni inserite
+I form devono rispettare RT1.
+L’inserimento dell’indirizzo porta al salvataggio sul database di latitudine e longitudine come descritto in RT2.
+
+Risultato: Una stanza è inserita nel sistema e le sue informazioni sono aggiornate
+
+
+(RF3) Permettere ai visitatori di ricercare un appartamento.
+
+Visibilità: UI / UR / URA
+Descrizione: Un qualsiasi utente è in grado di ricercare un appartamento all’interno del database.
+Inserendo una città o un indirizzo (anche parziale), il sistema ricerca all’interno del database gli appartamenti nel raggio di 20 km dalla latitudine e longitudine indicata.
+Inoltre è possibile raffinare ulteriormente la ricerca impostando uno o più dei seguenti filtri:
+- Numero minimo di stanze
+- Numero minimo di posti letto
+- Modificare il raggio di default di 20km
+
+La presenza obbligatoria di uno o più dei servizi aggiuntivi indicati in RF2
+I risultati vengono ordinati per distanza dalla latitudine/longitudine inserita.
+La ricerca rispetta il requisito RT5
+
+Risultato: Viene generata una lista di appartamenti che corrispondono alla ricerca che mostra alcuni dettagli della stanza.
+
+
+(RF4) Permettere ai visitatori di vedere i dettagli di un appartamento.
+
+Visibilità: UI / UR / URA
+Descrizione: Selezionando un appartamento dalla sezione in evidenza o in homepage o dai risultati di ricerca, appaiono tutti i dettagli disponibili riguardanti l’appartamento in questione, come specificato in RF2.
+In particolare, è mostrata una mappa che indica la posizione dell’appartamento.
+
+Risultato: Viene visualizzata la pagina di dettaglio di un appartamento
+
+
+(RF5) Permettere ai visitatori di scrivere al proprietario di un appartamento per chiedere informazioni.
+
+Visibilità: UI / UR / URA
+Descrizione: Dalla pagina di dettaglio dell’appartamento deve essere possibile inviare un messaggio al proprietario dell’appartamento.
+L’utente deve inserire la propria email e un messaggio.
+Nel caso in cui l’utente sia un UR o URA registrato, l’email è autocompilata con quella inserita durante la registrazione
+
+Risultato: Il messaggio viene salvato nel database
+
+
+(RF6) Permettere ai proprietari di appartamento registrati di vedere i messaggi ricevuti.
+
+Visibilità: URA
+Descrizione: Un proprietario che ha inserito uno o più appartamenti ha la possibilità di vedere i messaggi di richiesta ricevuti dagli utenti per gli appartamenti.
+Non è prevista la possibilità di risposta da parte dell’utente URA (che risponderà direttamente via email fuori dalla piattaforma)
+
+Risultato: L’utente visualizza i messaggi ricevuti, con le informazioni necessarie per poter rispondere all’utente via email.
+
+
+(RF7) Permettere ai proprietari di appartamento registrati di sponsorizzare il proprio appartamento.
+
+Visibilità: URA
+Descrizione: Un proprietario che ha inserito uno o più appartamenti ha la possibilità di pagare per metterli in evidenza in homepage e nella pagina di ricerca.
+Entrando in un pannello apposito della sua sezione personale, l’utente URA può selezionare uno dei suoi appartamenti e scegliere uno dei seguenti pacchetti promozionali:
+- 2,99 € per 24 ore di sponsorizzazione
+- 5.99 € per 72 ore di sponsorizzazione
+- 9.99 € per 144 ore di sponsorizzazione
+Il pagamento avviene tramite carta di credito seguendo RT3
+
+Un appartamento sponsorizzato ha le seguenti particolarità:
+Appare in Homepage nella sezione “Appartamenti in Evidenza”
+Nella pagina di ricerca, viene posizionato sempre prima di un appartamento non sponsorizzato che soddisfa le stesse caratteristiche di ricerca.
+Terminato il periodo di sponsorizzazione, l’appartamento tornerà ad essere visualizzato normalmente, senza alcuna particolarità.
+
+Risultato: L’appartamento viene sponsorizzato
+Eccezioni: Il sistema di pagamento non ha processato correttamente il pagamento / i dati della carta di credito non sono validi
+
+
+(RF8) Permettere ai proprietari di appartamento registrati di vedere statistiche dei propri appartamenti.
+
+Visibilità: URA
+Descrizione: Un proprietario che ha inserito uno o più appartamenti ha la possibilità di vedere le statistiche di visualizzazione per ogni appartamento inserito. 
+
+Risultato: L'utente visualizza le statistiche dell'appartamento selezionato.
