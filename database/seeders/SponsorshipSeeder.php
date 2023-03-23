@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Sponsorship;
 
 class SponsorshipSeeder extends Seeder
 {
@@ -14,6 +15,16 @@ class SponsorshipSeeder extends Seeder
      */
     public function run()
     {
-        //
+        
+        $sponsorships = config('sponsorship');
+
+        foreach ($sponsorships as $sponsorship) {
+            $newSponsorship = new Sponsorship();
+            $newSponsorship->name = $sponsorship['name'];
+            $newSponsorship->price = $sponsorship['price'];
+            $newSponsorship->duration = $sponsorship['duration'];
+            $newSponsorship->save();
+        }
+
     }
 }
