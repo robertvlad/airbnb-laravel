@@ -29,7 +29,7 @@ class ApartmentSeeder extends Seeder
             $newApartment->address = $apartment['address'];
             $newApartment->latitude = $apartment['latitude'];
             $newApartment->longitude = $apartment['longitude'];
-            $newApartment->cover_img = $apartment['cover_image'];
+            $newApartment->cover_img = $apartment['cover_img'];
             $newApartment->slug = Apartment::generateSlug($newApartment->title);
             $newApartment->save();
         }

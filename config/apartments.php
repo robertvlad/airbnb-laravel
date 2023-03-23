@@ -21,7 +21,7 @@ return $apartment =
             'address' => "Via della Conciliazionea 10, 00193 Roma RM",
             'latitude' => "",
             'longitude' => "",
-            'cover_image' => "https://a0.muscache.com/im/pictures/2d502704-5db1-47c0-bfee-3816d04743fb.jpg?im_w=1440",
+            'cover_img' => "https://a0.muscache.com/im/pictures/2d502704-5db1-47c0-bfee-3816d04743fb.jpg?im_w=1440",
         ],
         [
             'title' => "Limonaia, villa di lusso con piscina in costiera amalfitana",
@@ -38,7 +38,7 @@ return $apartment =
             'address' => "Via Alberico II, 33, 00193 Roma RM",
             'latitude' => "",
             'longitude' => "",
-            'cover_image' => "https://a0.muscache.com/im/pictures/miso/Hosting-19577276/original/f04148c4-4140-42d9-83cb-872e4a9bdd8c.jpeg?im_w=1200",
+            'cover_img' => "https://a0.muscache.com/im/pictures/miso/Hosting-19577276/original/f04148c4-4140-42d9-83cb-872e4a9bdd8c.jpeg?im_w=1200",
         ],
         [
             'title' => "Villa Editta in San Casciano in Val di Pesa",
@@ -54,7 +54,7 @@ return $apartment =
             'address' => "Piazza Americo Capponi, 6, 00193 Roma RM",
             'latitude' => "",
             'longitude' => "",
-            'cover_image' => "https://a0.muscache.com/im/pictures/prohost-api/Hosting-575151229813433355/original/8902f8c5-039f-415b-9705-efd2f3f8702f.jpeg?im_w=1440",
+            'cover_img' => "https://a0.muscache.com/im/pictures/prohost-api/Hosting-575151229813433355/original/8902f8c5-039f-415b-9705-efd2f3f8702f.jpeg?im_w=1440",
         ],
         [
             'title' => "Charm & Tradition Japan-Yui Valley",
@@ -67,7 +67,7 @@ return $apartment =
             'address' => "",
             'latitude' => "",
             'longitude' => "",
-            'cover_image' => "",
+            'cover_img' => "",
         ],
         [
             'title' => "Nurdachhaus Marie nella Foresta Nera",
@@ -81,7 +81,7 @@ return $apartment =
             'address' => "Neuhausen, Baden-Württemberg, Germania",
             'latitude' => "",
             'longitude' => "",
-            'cover_image' => "https://a0.muscache.com/im/pictures/miso/Hosting-50503787/original/15230787-28ca-4405-a89d-968f324d4c93.jpeg?im_w=1200",
+            'cover_img' => "https://a0.muscache.com/im/pictures/miso/Hosting-50503787/original/15230787-28ca-4405-a89d-968f324d4c93.jpeg?im_w=1200",
         ],
         [
             'title' => "La Calcara. Spiaggia privata",
@@ -94,7 +94,7 @@ return $apartment =
             'address' => "Amalfi coast , Campania, Italia",
             'latitude' => "",
             'longitude' => "",
-            'cover_image' => "https://a0.muscache.com/im/pictures/miso/Hosting-4971155/original/983adc0c-ce92-4138-9d23-81f5abe2d12e.jpeg?im_w=1200",
+            'cover_img' => "https://a0.muscache.com/im/pictures/miso/Hosting-4971155/original/983adc0c-ce92-4138-9d23-81f5abe2d12e.jpeg?im_w=1200",
         ],
 
         [
@@ -108,7 +108,7 @@ return $apartment =
             'address' => "Via Roma 2",
             'latitude' => "",
             'longitude' => "",
-            'cover_image' => "https://a0.muscache.com/im/pictures/ca15c4af-9ec8-4cb7-bdae-6b6a419729bc.jpg?im_w=960",
+            'cover_img' => "https://a0.muscache.com/im/pictures/ca15c4af-9ec8-4cb7-bdae-6b6a419729bc.jpg?im_w=960",
         ],
         [
             'title' => "Anna Chalet di pini",
@@ -121,7 +121,7 @@ return $apartment =
             'address' => "Via Firenze 4",
             'latitude' => "",
             'longitude' => "",
-            'cover_image' => "https://a0.muscache.com/im/pictures/852913e9-4636-4c0b-b3d0-070519b39dfb.jpg?im_w=960",
+            'cover_img' => "https://a0.muscache.com/im/pictures/852913e9-4636-4c0b-b3d0-070519b39dfb.jpg?im_w=960",
         ],
         [
             'title' => "Settle Poli - Cottage 4",
@@ -134,7 +134,7 @@ return $apartment =
             'address' => "Via Genova 6",
             'latitude' => "",
             'longitude' => "",
-            'cover_image' => "https://a0.muscache.com/im/pictures/miso/Hosting-51814051/original/82e5d74c-8c06-492c-945e-ebb34274e6d4.jpeg?im_w=960",
+            'cover_img' => "https://a0.muscache.com/im/pictures/miso/Hosting-51814051/original/82e5d74c-8c06-492c-945e-ebb34274e6d4.jpeg?im_w=960",
         ],
     ];
 

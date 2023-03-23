@@ -1,10 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Apartment;
+
+use Illuminate\Facades\Auth;
+use Illuminate\Facades\Storage;
+
 use App\Http\Requests\StoreApartmentRequest;
 use App\Http\Requests\UpdateApartmentRequest;
+use App\Http\Controllers\Controller;
+
+use App\Models\Optional;
+use App\Models\Sponsorship;
+use App\Models\Image;
+use App\Models\Message;
 
 class ApartmentController extends Controller
 {
@@ -15,7 +25,8 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        //
+        $apartments = Apartment::all();
+        return vieW('admin.apartments.index', compact('apartments'));
     }
 
     /**
@@ -25,7 +36,9 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        //
+        $optionals = Optional::all();
+        $sponsorships = Sponsorship::all();
+        return view('admin.apartments.create', compact('optionals', 'sponsorships'));
     }
 
     /**
@@ -47,7 +60,7 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        //
+        return view('admin.apartments.show', compact('apartment'));
     }
 
     /**
@@ -58,7 +71,9 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        //
+        $optionals = Optional::all();
+        $sponsorships = Sponsorship::all();
+        return view('admin.apartments.edit', compact('apartment', 'optionals', 'sponsorships'));
     }
 
     /**
@@ -81,6 +96,11 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
-        //
+
+        $apartment->optionals()->sync();
+
+        $apartment->delete();
+
+        return redirect()->route('admin.apartments.index')->with('message', 'Appartamento cancellato correttamente');
     }
 }

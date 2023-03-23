@@ -2,27 +2,27 @@
     return $optional =
     [
         [
-            'name' => "car_space",
+            'name' => "Car Space",
             'icon' => "fas fa-car"
         ],
         [
-            'name' => "wifi",
+            'name' => "WiFi",
             'icon' => "fas fa-wifi"
         ],
         [
-            'name' => "pool",
+            'name' => "Pool",
             'icon' => "fas fa-water-ladder"
         ],
         [
-            'name' => "kitchen",
+            'name' => "Kitchen",
             'icon' => "fas fa-fire-burner"
         ],
         [
-            'name' => "garden",
+            'name' => "Garden",
             'icon' => "fas fa-tree-city"
         ],
         [
-            'name' => "sea_view",
+            'name' => "Sea View",
             'icon' => "fas fa-water"
         ]
     ]
