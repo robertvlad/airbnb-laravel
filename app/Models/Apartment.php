@@ -16,34 +16,40 @@ class Apartment extends Model
 {
     use HasFactory;
 
-    protected $fillable =  ['title', 'slug', 'description', 'room_n', 'bed_n', 'bath_n', 'square_meters', 'visible', 'address', 'latitude', 'longitude', 'cover_image'];
+    protected $fillable =  ['title', 'slug', 'description', 'room_n', 'bed_n', 'bath_n', 'square_meters', 'visible', 'address', 'latitude', 'longitude', 'cover_img'];
 
-    public static function generateSlug($title){
+    public static function generateSlug($title)
+    {
         return Str::slug($title, '-');
     }
 
-    public function users(){
+    public function users()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function views(){
+    public function views()
+    {
         return $this->hasMany(View::class);
     }
-    
-    public function images(){
+
+    public function images()
+    {
         return $this->hasMany(Image::class);
     }
 
-    public function messages(){
+    public function messages()
+    {
         return $this->hasMany(Message::class);
     }
 
-    public function optionals(){
+    public function optionals()
+    {
         return $this->belongsToMany(Optional::class);
     }
 
-    public function sponsorships(){
+    public function sponsorships()
+    {
         return $this->belongsToMany(Sponsorship::class);
     }
-
 }

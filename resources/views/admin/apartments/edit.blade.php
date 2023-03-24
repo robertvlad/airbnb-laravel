@@ -23,10 +23,17 @@
                         <input type="text" class="form-control" placeholder="Inserisci il titolo" id="title" name="title" value="{{old('title') ?? $apartment->title}}">
                     </div>
                     <div class="form-group my-3">
-                        <label class="control-label">Immagine di copertina</label>
-                        <div class="mb-3">
-                            <p>WORK IN PROGRESS</p>
-                        </div>
+                        <label class="control-label">Copertina</label>
+                        <img src="{{ asset('storage/' .$apartment->cover_img ) }}" class="w-25 my-3">
+                        <input type="file" name="cover_img" id="cover_img" class="form-control">
+                        <div class="text-danger"></div>
+                    </div>
+                    <div class="form-group my-3">
+                        <label class="control-label">Vuoi rendere l'appartamento pubblico?</label>
+                        <select class="form-comntrol" name="visible" id="visible">
+                            <option value="1" {{$apartment->visible == old('visible', $apartment->visible) ? 'selected' : ''}}>Si</option>
+                            <option value="0" {{$apartment->visible == old('visible', $apartment->visible) ? 'selected' : ''}}>No</option>
+                        </select>
                     </div>
                     <div class="form-group my-3">
                         <label class="control-label">Sponsorships</label>

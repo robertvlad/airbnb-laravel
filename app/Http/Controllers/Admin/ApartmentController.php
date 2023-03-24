@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Apartment;
+use App\Http\Controllers\Controller;
 
-use Illuminate\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-
 
 use App\Http\Requests\StoreApartmentRequest;
 use App\Http\Requests\UpdateApartmentRequest;
-use App\Http\Controllers\Controller;
 
+use App\Models\Apartment;
 use App\Models\Optional;
 use App\Models\Sponsorship;
 use App\Models\Image;
@@ -50,50 +49,29 @@ class ApartmentController extends Controller
      */
     public function store(StoreApartmentRequest $request)
     {
-        $data = $request->validated();
+        $form_data = $request->validated();
         $slug = Apartment::generateSlug($request->title);
 
         // aggiungo una coppia chiave valore all'array $data
-        $data['slug'] = $slug;
+        $form_data['slug'] = $slug;
         $newApartment = new Apartment();
 
-        if($request->hasFile('cover_image')){
-            $path = Storage::disk('public')->put('cover_image', $request->cover_image);
-            $data['cover_image'] = $path;
+        if ($request->hasFile('cover_img')) {
+            $path = Storage::disk('public')->put('cover_img', $request->cover_img);
+            $form_data['cover_img'] = $path;
         }
 
-        $newApartment->fill($data);
+        $newApartment->fill($form_data);
         $newApartment->save();
+        
 
-        if($request->has('optionals')){
+        if ($request->has('optionals')) {
             $newApartment->optionals()->attach($request->optionals);
         }
 
-        if($request->has('sponsorships')){
+        if ($request->has('sponsorships')) {
             $newApartment->sponsorships()->attach($request->sponsorships);
         }
-
-        $new_apartment = new Apartment();
-        $new_apartment->title = $data['title'];
-        $new_apartment->slug = $data['slug'];
-        $new_apartment->description = $data['description'];
-        $new_apartment->room_n = $data['room_n'];
-        $new_apartment->bed_n = $data['bed_n'];
-        $new_apartment->bath_n = $data['bath_n'];
-        $new_apartment->square_meters = $data['square_meters'];
-        $new_apartment->visible = $data['visible'];
-        $new_apartment->address = $data['address'];
-        $new_apartment->latitude = $data['latitude'];
-        $new_apartment->longitude = $data['longitude'];
-        $new_apartment->cover_image = $data['cover_image'];
-
-        $new_apartment->save();
-
-        // Mail::to('hello@example.com')->send(new ConfirmProject($new_apartment));
-
-
-        // queste operazione si possono fare anche così (3 in 1)
-        // $newPost = Post::create($data);
 
         return redirect()->route('admin.apartments.index')->with('message', 'Appartamento aggiunto correttamente');
     }
@@ -137,24 +115,23 @@ class ApartmentController extends Controller
 
         $form_data['slug'] = $slug;
 
-        if($request->has('cover_image')){
-            //SECONDO CONTROLLO PER CANCELLARE IL FILE PRECEDENTE SE PRESENTE
-            if($apartment->cover_image){
-                Storage::delete($apartment->cover_image);  
+        if ($request->has('cover_img')) {
+            if ($apartment->cover_img) {
+                Storage::delete($apartment->cover_img);
             }
 
-            $path = Storage::disk('public')->put('cover_image', $request->cover_image);
-            
-            $form_data['cover_image'] = $path;
+            $path = Storage::disk('public')->put('cover_img', $request->cover_img);
+
+            $form_data['cover_img'] = $path;
         }
 
         $apartment->update($form_data);
 
-        if($request->has('optionals')){
+        if ($request->has('optionals')) {
             $apartment->optionals()->sync($request->optionals);
         }
 
-        return redirect()->route('admin.apartments.index')->with('message', $apartment->title.' è stato correttamente aggiornato');
+        return redirect()->route('admin.apartments.index')->with('message', $apartment->title . ' è stato correttamente aggiornato');
     }
 
     /**

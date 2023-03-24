@@ -24,9 +24,9 @@ return new class extends Migration
             $table->integer('square_meters');
             $table->boolean('visible');
             $table->string('address');
-            $table->string('latitude', 20);
-            $table->string('longitude', 20);
-            $table->string('cover_img');
+            $table->string('latitude', 20)->nullable();
+            $table->string('longitude', 20)->nullable();
+            $table->string('cover_img')->nullable();
             $table->timestamps();
         });
     }

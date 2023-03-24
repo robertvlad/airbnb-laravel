@@ -1,4 +1,4 @@
-@extends('layouts.admin');
+@extends('layouts.admin')
 
 @section('content')
 
@@ -15,69 +15,82 @@
                 <div class="alert alert-danger">
                     <ul class="list-unstyled">
                         @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>                        
-                        @endforeach
-                    </ul>
+                        <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+        </div>
+        @endif --}}
+        <div>
+            <form action="{{ route('admin.apartments.store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label class="control-label">Titolo</label>
+                    <input type="text" class="form-control" placeholder="Titolo" id="title" name="title">
                 </div>
-            @endif --}}
-            <div>
-                <form action="{{ route('admin.apartments.store')}}" method="POST">
-                    @csrf
+                <div class="form-group my-3">
+                    <label class="control-label">Copertina</label>
+                    <input type="file" name="cover_img" id="cover_img" class="form-control">
+                    <div class="text-danger"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Indirizzo</label>
+                    <input type="text" class="form-control" placeholder="Address" id="address" name="address">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Descrizione</label>
+                    <textarea name="description" id="content" cols="30" rows="10" placeholder="Descrizione" class="form-control"></textarea>
+                </div>
+                <div class="d-flex gap-5">
                     <div class="form-group">
-                        <label class="control-label">TITOLO</label>
-                        <input type="text" class="form-control" placeholder="Titolo" id="title" name="title">
+                        <label class="control-label">STANZE</label>
+                        <input type="number" class="form-control" placeholder="Stanze" id="room_n" name="room_n">
                     </div>
                     <div class="form-group">
-                        <label class="control-label">ADDRESS</label>
-                        <input type="text" class="form-control" placeholder="Address" id="address" name="address">
+                        <label class="control-label">BAGNI</label>
+                        <input type="number" class="form-control" placeholder="Bagni" id="bath_n" name="bath_n">
                     </div>
                     <div class="form-group">
-                        <label class="control-label">Descrizione</label>
-                        <textarea name="description" id="content" cols="30" rows="10" placeholder="Descrizione" class="form-control"></textarea>
+                        <label class="control-label">LETTI</label>
+                        <input type="number" class="form-control" placeholder="Letti" id="bed_n" name="bed_n">
                     </div>
-                    <div class="d-flex gap-5">
-                        <div class="form-group">
-                            <label class="control-label">STANZE</label>
-                            <input type="number" class="form-control" placeholder="Stanze" id="room_n" name="room_n">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">BAGNI</label>
-                            <input type="number" class="form-control" placeholder="Bagni" id="bath_n" name="bath_n">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">LETTI</label>
-                            <input type="number" class="form-control" placeholder="Letti" id="bed_n" name="bed_n">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">METRI QUADRATI</label>
-                            <input type="number" class="form-control" placeholder="Metri" id="square_meters" name="square_meters">
-                        </div>
+
+                    <div class="form-group">
+                        <label class="control-label">METRI QUADRATI</label>
+                        <input type="number" class="form-control" placeholder="Metri" id="square_meters" name="square_meters">
                     </div>
-                    <div class="form-group my-3">
-                        <label class="control-label">Sponsorship</label>
-                        <select class="form-comntrol" name="sponsorship_id" id="sponsorship_id">
-                            <option value="">Seziona gli sponsorship</option>
-                            @foreach ($sponsorships as $sponsorship)
-                                <option value="{{ $sponsorship->id }}">{{ $sponsorship->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group my-3">
-                        <div class="control-label">Optionals: </div>
-                        @foreach ($optionals as $optional)
-                        <div class="form-check">
-                            <input type="checkbox" value="{{ $optional->id }}" name='optionals[]'>
-                            <label class="form-check-label"><i class="{{ $optional->icon}}"></i> {{ $optional->name }}</label>  
-                        </div>                          
+                </div>
+                <div class="form-group my-3">
+                    <label class="control-label">Vuoi rendere l'appartamento pubblico?</label>
+                    <select class="form-comntrol" name="visible" id="visible">
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+                <div class="form-group my-3">
+                    <label class="control-label">Sponsorship</label>
+                    <select class="form-comntrol" name="sponsorship_id" id="sponsorship_id">
+                        <option value="">Seziona gli sponsorship</option>
+                        @foreach ($sponsorships as $sponsorship)
+                        <option value="{{ $sponsorship->id }}">{{ $sponsorship->name }}</option>
                         @endforeach
+                    </select>
+                </div>
+                <div class="form-group my-3">
+                    <div class="control-label">Optionals: </div>
+                    @foreach ($optionals as $optional)
+                    <div class="form-check">
+                        <input type="checkbox" value="{{ $optional->id }}" name='optionals[]'>
+                        <label class="form-check-label"><i class="{{ $optional->icon}}"></i> {{ $optional->name }}</label>
                     </div>
-                    <div class="form-group my-2">
-                        <button type="submit" class="btn btn-success">Salva</button>                     
-                    </div>                    
-                </form>
-            </div>
+                    @endforeach
+                </div>
+                <div class="form-group my-2">
+                    <button type="submit" class="btn btn-success">Salva</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 
 @endsection
