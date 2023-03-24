@@ -10,7 +10,7 @@
             Welcome to BoolBnB
         </h1>
         <p class="col-md-12 fs-4 d-flex justify-content-center mt-4">Database per gli Host di BoolBnB</p>
-        <a href="https://packagist.org/packages/pacificdev/laravel_9_preset" class="btn btn-primary btn-lg d-flex justify-content-center col-md-4 offset-md-4 mt-5" type="button">Enter</a>
+        <a href="{{url('/admin') }}" class="btn btn-primary btn-lg d-flex justify-content-center col-md-4 offset-md-4 mt-5" type="button">Enter</a>
     </div>
 </div>
 

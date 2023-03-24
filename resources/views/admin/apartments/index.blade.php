@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 
     <div class="container">
@@ -9,7 +9,7 @@
                         <h2>ELENCO APPARTAMENTI</h2>
                     </div>
                     <div>
-                        <a class="btn btn-primary" href="{{route('admin.apartments.create')}}">Aggiungi Post</a>
+                        <a class="btn btn-primary" href="{{route('admin.apartments.create')}}">Aggiungi Apartment</a>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                         @empty
                         <tr>
                             <td scope="row">
-                                Nessun post, aggiungilo da <a href="{{route('admin.apartments.create')}}">qui</a> 
+                                Nessun apartment, aggiungilo da <a href="{{route('admin.apartments.create')}}">qui</a> 
                             </td>
                         </tr>        
                         @endforelse
