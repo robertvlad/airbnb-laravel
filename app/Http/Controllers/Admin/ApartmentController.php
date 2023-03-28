@@ -23,9 +23,8 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        if (Auth::check())
-        {
-             $id = Auth::user()->getId();
+        if (Auth::check()) {
+            $id = Auth::user()->getId();
         }
         $apartments = Apartment::all();
         $sponsorships = Sponsorship::all();
@@ -55,16 +54,15 @@ class ApartmentController extends Controller
         $form_data = $request->validated();
         $slug = Apartment::generateSlug($request->title);
 
-        
+
 
         // aggiungo una coppia chiave valore all'array $data
         $form_data['slug'] = $slug;
         $newApartment = new Apartment();
-        
+
         //id utente 
-        if (Auth::check())
-        {
-             $id = Auth::user()->getId();
+        if (Auth::check()) {
+            $id = Auth::user()->getId();
         }
         $form_data['user_id'] = $id;
 
@@ -164,5 +162,4 @@ class ApartmentController extends Controller
 
         return redirect()->route('admin.apartments.index')->with('message', 'Appartamento cancellato correttamente');
     }
-    
 }

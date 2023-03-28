@@ -6,10 +6,10 @@
         <div class="col-12 my-3">
             <div class="d-flex justify-content-between">
                 <div>
-                    <h2>ELENCO APPARTAMENTI</h2>
+                    <h2>Apartments List:</h2>
                 </div>
                 <div>
-                    <a class="btn btn-primary" href="{{route('admin.apartments.create')}}">Aggiungi Apartmento</a>
+                    <a class="btn btn-secondary" href="{{route('admin.apartments.create')}}">Add an Apartment</a>
                 </div>
             </div>
         </div>
@@ -21,21 +21,25 @@
             @endif
             <table class="table table-striped text-center">
                 <thead>
-                    <tr>
-                        <th>Titolo</th>
-                        <th>Sponsorizzazione</th>
-                        <th>Azioni</th>
+                    <tr class="bigger-text">
+                        <th>Title</th>
+                        <th>Sponsorship</th>
+                        <th>Messages</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-
                     @forelse ($apartments as $apartment)
                     @if($apartment->user_id == $id)
-                    <tr>
+                    <tr class="medium-text">
                         <td>{{ $apartment->title }}</td>
                         <td>@foreach ($apartment->sponsorships as $sponsorship)
                             {{$sponsorship['name']}}
-                        @endforeach</td>
+                            @endforeach
+                        </td>
+                        <td>
+
+                        </td>
                         <td>
                             <a href="{{route('admin.apartments.show', $apartment->slug)}}" title="Visualizza apartment" class="btn btn-sm btn-square btn-primary">
                                 <i class="fas fa-eye"></i>
@@ -52,14 +56,10 @@
                             </form>
                         </td>
                     </tr>
-                    @else
-                    <div class="alert alert-danger">
-                        Non hai appartamenti
-                    </div>
                     @endif
                     @empty
                     <div class="alert alert-danger">
-                        Non hai appartamenti
+                        You dont have any Apartment, do you want to Place one? do it <a href="{{route('admin.apartments.create')}}">Here!</a>
                     </div>
                     @endforelse
                 </tbody>
