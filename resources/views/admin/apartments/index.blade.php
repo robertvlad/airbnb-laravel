@@ -19,6 +19,7 @@
                 {{ session('message')}}
             </div>
             @endif
+
             <table class="table table-striped text-center">
                 <thead>
                     <tr class="bigger-text">

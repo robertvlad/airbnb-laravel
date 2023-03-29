@@ -51,7 +51,12 @@ class User extends Authenticatable
     
     public function getId()
     {
-    return $this->id;
+        return $this->id;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
     }
 
 }

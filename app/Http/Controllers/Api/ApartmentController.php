@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Apartment;
 
+
 class ApartmentController extends Controller
 {
     public function index(){
@@ -12,7 +13,7 @@ class ApartmentController extends Controller
 
         return response()->json([
             'success' => true,
-            'results' => $apartments
+            'results' => $apartments,
         ]);
     }
 

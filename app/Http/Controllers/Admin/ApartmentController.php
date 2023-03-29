@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreApartmentRequest;
 use App\Http\Requests\UpdateApartmentRequest;
+use GuzzleHttp\Client;
 
 class ApartmentController extends Controller
 {
@@ -49,43 +50,66 @@ class ApartmentController extends Controller
      * @param  \App\Http\Requests\StoreApartmentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreApartmentRequest $request)
-    {
-        $form_data = $request->validated();
-        $slug = Apartment::generateSlug($request->title);
+    public function store(StoreApartmentRequest $request){
+    $form_data = $request->validated();
+    $slug = Apartment::generateSlug($request->title);
 
+    // aggiungo una coppia chiave valore all'array $data
+    $form_data['slug'] = $slug;
+    $newApartment = new Apartment();
 
-
-        // aggiungo una coppia chiave valore all'array $data
-        $form_data['slug'] = $slug;
-        $newApartment = new Apartment();
-
-        //id utente 
-        if (Auth::check()) {
-            $id = Auth::user()->getId();
-        }
+    //id utente 
+    if (Auth::check()) {
+        $id = Auth::user()->getId();
         $form_data['user_id'] = $id;
-
-        if ($request->hasFile('cover_img')) {
-            $path = Storage::disk('public')->put('cover_img', $request->cover_img);
-            $form_data['cover_img'] = $path;
-        }
-
-        $newApartment->fill($form_data);
-
-        $newApartment->save();
-
-
-        if ($request->has('optionals')) {
-            $newApartment->optionals()->attach($request->optionals);
-        }
-
-        if ($request->has('sponsorships')) {
-            $newApartment->sponsorships()->attach($request->sponsorships);
-        }
-
-        return redirect()->route('admin.apartments.index')->with('message', 'Appartamento aggiunto correttamente');
+    } else {
+        $form_data['user_id'] = null; 
     }
+
+    if ($request->hasFile('cover_img')) {
+        $path = Storage::disk('public')->put('cover_img', $request->cover_img);
+        $form_data['cover_img'] = $path;
+    }
+    // Recupero l'indirizzo dall'array di dati
+    $address = $form_data['address'];
+
+    // Creo un'istanza del client GuzzleHttp
+    $client = new \GuzzleHttp\Client([
+        'verify' => false
+    ]);
+
+    // Eseguo una richiesta GET all'API di TomTom per ottenere le coordinate geografiche dell'indirizzo
+    $response = $client->get('https://api.tomtom.com/search/2/geocode/' . urlencode($address) . '.json', [
+    'query' => [
+        'key' => '186r2iPLXxGSFMemhylqjC36urDbgOV2', // chiave API di TomTom
+    ],
+    ]);
+
+    // Decodifico la risposta JSON e recupera le coordinate geografiche
+    $geocode_data = json_decode($response->getBody(), true);
+    $longitude = $geocode_data['results'][0]['position']['lon'];
+    $latitude = $geocode_data['results'][0]['position']['lat'];
+
+    // Aggiungo le coordinate geografiche all'array di dati
+    $form_data['longitude'] = $longitude;
+    $form_data['latitude'] = $latitude;
+
+    $newApartment->fill($form_data);
+
+    $newApartment->save();
+
+
+    if ($request->has('optionals')) {
+        $newApartment->optionals()->attach($request->optionals);
+    }
+
+    if ($request->has('sponsorships')) {
+        $newApartment->sponsorships()->attach($request->sponsorships);
+    }
+
+    return redirect()->route('admin.apartments.index')->with('message', 'Appartamento aggiunto correttamente');
+    }
+
 
     /**
      * Display the specified resource.
