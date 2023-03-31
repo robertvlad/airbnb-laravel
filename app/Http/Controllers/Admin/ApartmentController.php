@@ -50,7 +50,8 @@ class ApartmentController extends Controller
      * @param  \App\Http\Requests\StoreApartmentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreApartmentRequest $request){
+    public function store(StoreApartmentRequest $request)
+    {
     $form_data = $request->validated();
     $slug = Apartment::generateSlug($request->title);
 
@@ -157,6 +158,30 @@ class ApartmentController extends Controller
 
             $form_data['cover_img'] = $path;
         }
+
+        // Recupero l'indirizzo dall'array di dati
+        $address = $form_data['address'];
+
+        // Creo un'istanza del client GuzzleHttp
+        $client = new \GuzzleHttp\Client([
+            'verify' => false
+        ]);
+
+        // Eseguo una richiesta GET all'API di TomTom per ottenere le coordinate geografiche dell'indirizzo
+        $response = $client->get('https://api.tomtom.com/search/2/geocode/' . urlencode($address) . '.json', [
+        'query' => [
+            'key' => '186r2iPLXxGSFMemhylqjC36urDbgOV2', // chiave API di TomTom
+        ],
+        ]);
+
+        // Decodifico la risposta JSON e recupera le coordinate geografiche
+        $geocode_data = json_decode($response->getBody(), true);
+        $longitude = $geocode_data['results'][0]['position']['lon'];
+        $latitude = $geocode_data['results'][0]['position']['lat'];
+
+        // Aggiungo le coordinate geografiche all'array di dati
+        $form_data['longitude'] = $longitude;
+        $form_data['latitude'] = $latitude;
 
         $apartment->update($form_data);
 

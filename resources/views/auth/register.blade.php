@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" id="registerForm">
                         @csrf
 
                         <div class="mb-4 row">
@@ -84,4 +84,37 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+
+    <script>
+        // seleziona il pulsante di invio del modulo
+        var submitBtn = document.getElementById('submitBtn');
+        // seleziona tutti i campi di input del modulo
+        var formInputs = document.querySelectorAll('input');
+
+        // aggiungi un gestore di eventi ad ogni campo di input
+        for (var i = 0; i < formInputs.length; i++) {
+            formInputs[i].addEventListener('input', function() {
+                // verifica se tutti i campi di input sono validi
+                var formValid = true;
+                for (var j = 0; j < formInputs.length; j++) {
+                    if (!formInputs[j].checkValidity()) {
+                        formValid = false;
+                        break;
+                    }
+                }
+                // abilita o disabilita il pulsante di invio del modulo
+                if (formValid) {
+                    submitBtn.disabled = false;
+                } else {
+                    submitBtn.disabled = true;
+                }
+            });
+        }
+    </script>
+
+    @parent
+    
 @endsection

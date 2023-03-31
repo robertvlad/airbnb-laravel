@@ -18,7 +18,9 @@
                     @endif
 
                     {{ __('Welcome Back Dummy!') }}
+
                 </div>
+                <button class="btn btn-secondary"><a href="http://localhost:5174/" class="text-white text-decoration-none">Back to Apartments Home</a></button>
             </div>
         </div>
     </div>

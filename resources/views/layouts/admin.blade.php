@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('BoolBnB', 'BoolBnB') }}</title>
 
 
     <!-- Fonts -->
@@ -45,7 +45,7 @@
                 @else
                 <li class="nav-item dropdown absolute-5">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle text-white mx-3 absolute-5" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
+                        {{ Auth::user()->email }}
                     </a>
 
                     <div id="dropdown-user" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -104,4 +104,5 @@
         </div>
     </div>
 </body>
+
 </html>

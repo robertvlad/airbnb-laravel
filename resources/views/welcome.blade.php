@@ -13,10 +13,5 @@
         <a href="{{url('/admin') }}" class="btn btn-primary btn-lg d-flex justify-content-center col-md-4 offset-md-4 mt-5" type="button">Enter</a>
     </div>
 </div>
-
-<div class="content">
-    <div class="container">
-        {{-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora temporibus, dicta nemo aliquam totam nisi deserunt soluta quas voluptatum ab beatae praesentium necessitatibus minus, facilis illum rerum officiis accusamus dolores!</p> --}}
-    </div>
-</div>
+<a href="https://www.youtube.com/watch?v=tafJKM2CZN4&t=" class="text-white">;)</a>
 @endsection
