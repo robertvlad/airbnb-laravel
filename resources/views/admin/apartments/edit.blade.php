@@ -23,6 +23,11 @@
             </ul>
         </div>
         @endif
+        @if (session('message'))
+            <div class="alert alert-danger">
+                {{ session('message')}}
+            </div>
+        @endif
         <div class="col-12">
             <form action="{{route('admin.apartments.update', ['apartment' => $apartment['slug']])}}" method="POST" enctype="multipart/form-data">
                 @csrf

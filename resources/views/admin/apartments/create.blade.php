@@ -20,6 +20,11 @@
                 </ul>
             </div>
             @endif
+            @if (session('message'))
+            <div class="alert alert-danger">
+                {{ session('message')}}
+            </div>
+            @endif
             <div>
                 <form action="{{ route('admin.apartments.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -85,3 +90,4 @@
 </div>
 
 @endsection
+

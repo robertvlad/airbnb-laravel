@@ -48,13 +48,9 @@
                             <a href="{{route('admin.apartments.edit', $apartment->slug)}}" title="Modfica apartment" class="btn btn-sm btn-square btn-warning mx-2">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form class="d-inline-block" action="{{route('admin.apartments.destroy', $apartment->slug)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-square btn-danger">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </form>
+                            <button type="submit" class="btn btn-sm btn-square btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="fas fa-trash"></i>
+                            </button>
                         </td>
                     </tr>
                     @endif
@@ -69,4 +65,5 @@
     </div>
 </div>
 
+@include('admin.partials.modal')
 @endsection

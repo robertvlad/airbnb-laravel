@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Apartment;
 use App\Models\Message;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
+use App\Http\Controllers\Controller;
 
 class MessageController extends Controller
 {
@@ -15,7 +19,12 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::check()) {
+            $id = Auth::user()->getId();
+        }
+        $apartments = Apartment::all();
+        $messages = Message::all();
+        return view('admin.messages.index', compact('apartments', 'id', 'messages'));
     }
 
     /**
@@ -47,8 +56,9 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        //
+        return view('admin.messages.show', compact('message'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -81,6 +91,8 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        //
+        $message->delete();
+
+        return redirect()->route('admin.messages.index')->with('message', 'Message Deleted');
     }
 }

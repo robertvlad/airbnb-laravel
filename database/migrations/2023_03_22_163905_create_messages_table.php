@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('apartment_id');
+            $table->foreign('apartment_id')->references('id')->on('apartments');
             $table->text('message');
-            $table->string('user_mail', 80);
-            $table->string('name', 50)->nullable();
-            $table->string('surname', 50)->nullable();
+            $table->string('user_mail', 100);
+            $table->boolean('viewed')->default(false);
             $table->timestamps();
         });
     }

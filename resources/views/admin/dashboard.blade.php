@@ -7,7 +7,7 @@
     </h2>
     <div class="row justify-content-center">
         <div class="col">
-            <div class="card">
+            <div class="card text-center">
                 <div class="card-header">{{ __('User Dashboard') }}</div>
 
                 <div class="card-body">
@@ -20,8 +20,11 @@
                     {{ __('Welcome Back Dummy!') }}
 
                 </div>
-                <button class="btn btn-secondary"><a href="http://localhost:5174/" class="text-white text-decoration-none">Back to Apartments Home</a></button>
+                
             </div>
+            <a href="http://localhost:5174/" class="text-white text-decoration-none d-flex justify-content-center w-100">
+                <button class="btn btn-secondary w-100">Back to Apartments Home</button>
+            </a>
         </div>
     </div>
 </div>

@@ -17,7 +17,7 @@
         </div>
         <div class="col-12 my-5">
             <div>
-                <img src="{{ asset('storage/' .$apartment->cover_img) }}" alt="{{$apartment->title}}" class="w-25 img-fluid">
+                <img src="{{ asset('storage/' .$apartment->cover_img) }}" alt="{{$apartment->title}}" class="img-fluid img-show">
             </div>
             <label class="d-block"><strong>Appartment Description:</strong></label>
             <p>{{ $apartment->description }}</p>

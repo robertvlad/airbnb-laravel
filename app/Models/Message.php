@@ -10,10 +10,10 @@ class Message extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['message', 'user_mail', 'name', 'surname'];
+    protected $fillable = ['apartment_id', 'message', 'user_mail'];
 
-    public function apartments(){
+    public function apartments()
+    {
         return $this->belongsTo(Apartment::class);
     }
-
 }

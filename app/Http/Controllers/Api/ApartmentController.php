@@ -24,7 +24,7 @@ class ApartmentController extends Controller
         if($apartment){
             return response()->json([
                 'success' => true,
-                'project' => $apartment
+                'results' => $apartment
             ]);
         }
         else{
