@@ -20,25 +20,20 @@
             <table class="table table-striped text-center">
                 <thead>
                     <tr class="bigger-text">
-                        <th>e-Mail</th>
+                        <th class="d-none d-sm-table-cell">e-Mail</th>
                         <th>Apartment Name</th>
-                        <th>Date</th>
+                        <th class="d-none d-lg-table-cell">Date</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($apartments as $apartment)
-                    @forelse ($apartment->messages as $message)
+                    @foreach ($apartment->messages as $message)
                     @if($apartment->user_id == $id)
                     <tr class="medium-text">
-                        <td>{{ $message->user_mail }}</td>
-                        <td>@foreach ($messages as $message)
-                            {{$apartment['title']}}
-                            @endforeach
-                        </td>
-                        <td>
-                            {{$message['created_at']}}
-                        </td>
+                        <td class="d-none d-sm-table-cell">{{ $message->user_mail }}</td>
+                        <td class="ellipsis ellipsis-cont">{{$apartment['title']}}</td>
+                        <td class="d-none d-lg-table-cell">{{$message['created_at']}}</td>
                         <td>
                             <a href="{{route('admin.messages.show', $message->id)}}" title="Visualize message" class="btn btn-sm btn-square btn-primary">
                                 <i class="fas fa-eye"></i>
@@ -46,21 +41,19 @@
                             <form class="d-inline-block" action="{{route('admin.messages.destroy', $message->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-square btn-danger">
+                                <button type="submit" class="btn btn-sm btn-square btn-danger" data-bs-toggle="modalmsg" data-bs-target="#exampleModal">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
                         </td>
                     </tr>
                     @endif
-                    @empty
-
-                    @endforelse
+                    @endforeach
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
+@include('admin.partials.modalmsg')
 @endsection

@@ -10,7 +10,7 @@
     </header>
 
     <!-- Modal trigger button -->
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-account">
+    <button type="button" class="btn btn-danger mt-5" data-bs-toggle="modal" data-bs-target="#delete-account">
         {{__('Delete Account')}}
     </button>
 

@@ -29,8 +29,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        // return redirect()->intended(RouteServiceProvider::HOME);
-        return redirect()->away('http://localhost:5174/');
+        // return redirect()->intended(RouteServiceProvider::DASHBOARD);
+        return redirect()->away('http://127.0.0.1:8000/admin');
     }
 
     /**

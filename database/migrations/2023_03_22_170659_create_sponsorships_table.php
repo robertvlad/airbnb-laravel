@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('sponsorships', function (Blueprint $table) {
             $table->id();
             $table->string('name', 10)->unique();
-            $table->decimal('price', 5,2);
+            $table->decimal('price', 5, 2);
             $table->smallInteger('duration');
+            $table->text('description');
+            $table->string('sp_img');
             $table->timestamps();
         });
     }

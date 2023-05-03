@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-12 my-5">
+        <div class="col-12 mt-5 mb-4">
             <div class="d-flex justify-content-between">
                 <div>
                     <h2>Appartment Details:</h2>
@@ -15,28 +15,31 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 my-5">
-            <div>
-                <img src="{{ asset('storage/' .$apartment->cover_img) }}" alt="{{$apartment->title}}" class="img-fluid img-show">
+        <div class="col-12 ">
+            <div class="cards mb-3" id="cards-search">
+                <img src="{{ asset('storage/' .$apartment->cover_img) }}" alt="{{$apartment->title}}" class="img-fluid img-show cards-img">
             </div>
-            <label class="d-block"><strong>Appartment Description:</strong></label>
-            <p>{{ $apartment->description }}</p>
-            <p><strong>Local n.: </strong>{{ $apartment->room_n }}</p>
-            <p><strong>Rooms n.: </strong>{{ $apartment->bed_n }}</p>
-            <p><strong>Bathrooms: </strong>{{ $apartment->bath_n }}</p>
-            <p><strong>Square Meters: </strong>{{ $apartment->square_meters }}</p>
-            <p><strong>Adress: </strong>{{ $apartment->address }}</p>
-            <p><strong>Sponsorship: </strong>
+            <hr class="my-5">
+            <p class="d-block"><i class="me-2 fas fa-house-user"></i><strong>Description:</strong> <span class="text-secondary">{{ $apartment->description }}</span></p>
+            <p><i class="me-2 fas fa-door-closed"></i><strong>Local n.: </strong> <span class="text-secondary">{{ $apartment->room_n }}</span></p>
+            <p><i class="me-2 fas fa-bed"></i><strong>Rooms n.: </strong><span class="text-secondary">{{ $apartment->bed_n }}</span></p>
+            <p><i class="me-2 fas fa-shower"></i><strong>Bathrooms: </strong><span class="text-secondary">{{ $apartment->bath_n }}</span></p>
+            <p><i class="me-2 fas fa-house-chimney"></i><strong>Square Meters: </strong><span class="text-secondary">{{ $apartment->square_meters }}</span></p>
+            <p><i class="me-2 fab fa-periscope"></i><strong>Address: </strong><span class="text-secondary">{{ $apartment->address }}</span></p>
+            <p><i class="me-2 fas fa-star"></i><strong>Sponsorship: </strong><span class="text-secondary">
                 @foreach ($apartment->sponsorships as $sponsorship)
                 {{$sponsorship['name']}}
                 @endforeach
+            </span>
             </p>
-            <p><strong>Optionals: </strong>
+            <p><i class="me-2 fas fa-list"></i><strong>Optionals: </strong><span class="text-secondary">
                 @foreach ($apartment->optionals as $optional)
-                {{$optional['name']}}
+                {{$optional['name']}},
                 @endforeach
+            </span>
             </p>
         </div>
+        <hr class="mt-5">
     </div>
 </div>
 

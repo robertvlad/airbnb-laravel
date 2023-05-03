@@ -16,6 +16,7 @@ class SearchController extends Controller
 
         $query = Apartment::query();
 
+
         // Filtrare per indirizzo
         if ($request->has('address')) {
             $address = $request->input('address');
@@ -48,7 +49,10 @@ class SearchController extends Controller
             });
         }
         
-        $apartments = $query->get();           
+        $apartments = $query
+        ->leftJoin('apartment_sponsorship', 'apartments.id', '=', 'apartment_sponsorship.apartment_id')
+        ->orderByRaw('CASE WHEN apartment_sponsorship.id IS NULL THEN 1 ELSE 0 END')
+        ->get();
         return response()->json($apartments);
     }
 

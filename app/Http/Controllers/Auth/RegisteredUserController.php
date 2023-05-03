@@ -31,8 +31,8 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email'         => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+            'password'      => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
@@ -48,6 +48,6 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         //return redirect(RouteServiceProvider::HOME);
-        return redirect()->away('http://localhost:5174/');
+        return redirect()->away('http://127.0.0.1:8000/admin');
     }
 }

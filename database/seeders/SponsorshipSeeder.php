@@ -15,7 +15,7 @@ class SponsorshipSeeder extends Seeder
      */
     public function run()
     {
-        
+
         $sponsorships = config('sponsorship');
 
         foreach ($sponsorships as $sponsorship) {
@@ -23,8 +23,9 @@ class SponsorshipSeeder extends Seeder
             $newSponsorship->name = $sponsorship['name'];
             $newSponsorship->price = $sponsorship['price'];
             $newSponsorship->duration = $sponsorship['duration'];
+            $newSponsorship->description = $sponsorship['description'];
+            $newSponsorship->sp_img = $sponsorship['sp_img'];
             $newSponsorship->save();
         }
-
     }
 }

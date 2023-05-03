@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 
 class MessageController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -56,6 +57,11 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
+
+        $viewed_message = Message::find($message->id);
+        $viewed_message->viewed = true;
+        $viewed_message->save();
+    
         return view('admin.messages.show', compact('message'));
     }
 
@@ -95,4 +101,5 @@ class MessageController extends Controller
 
         return redirect()->route('admin.messages.index')->with('message', 'Message Deleted');
     }
+
 }

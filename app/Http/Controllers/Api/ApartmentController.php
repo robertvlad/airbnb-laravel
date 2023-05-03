@@ -10,7 +10,11 @@ use Illuminate\Support\Facades\Validator;
 class ApartmentController extends Controller
 {
     public function index(){
-        $apartments = Apartment::with('sponsorships', 'optionals')->paginate(3);
+
+        $apartments = Apartment::with('sponsorships', 'optionals')
+        ->leftJoin('apartment_sponsorship', 'apartments.id', '=', 'apartment_sponsorship.apartment_id')
+        ->orderByRaw('CASE WHEN apartment_sponsorship.id IS NULL THEN 1 ELSE 0 END')
+        ->paginate(9);
 
         return response()->json([
             'success' => true,

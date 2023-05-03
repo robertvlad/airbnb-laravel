@@ -5,6 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .w-50 {
@@ -36,4 +37,57 @@
 .img-show {
     width: 300px;
     height: 200px;
+}
+
+header {
+    height: 60px;
+}
+
+.cards-img {
+    object-fit: cover;
+    width: 300px;
+    height: 200px;
+    border-radius: 1rem;
+}
+
+.form-create {
+    padding-left: 0;
+}
+
+@media screen and (max-width: 576px) {
+    .ellipsis {
+        width: 20px;
+        text-overflow: ellipsis;
+        /* enables ellipsis */
+        /* keeps the text in a single line */
+        overflow: hidden;
+        /* keeps the element from overflowing its parent */
+    }
+
+    .ellipsis-cont {
+        overflow: hidden;
+    }
+}
+
+
+
+.ul-sponsorships {
+    height: 200px;
+    overflow-y: auto;
+}
+
+.text-azure {
+    color: rgb(80, 250, 250);
+}
+
+.text-lime {
+    color: lime;
+}
+
+.font-size-test {
+    font-size: 18px;
+}
+
+.unstyled-link {
+    text-decoration: none;
 }

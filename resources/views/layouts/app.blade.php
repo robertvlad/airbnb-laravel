@@ -14,6 +14,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500;600&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
 
     <!-- Fontawesome 6 cdn -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous' referrerpolicy='no-referrer' />
@@ -26,11 +28,10 @@
     <div id="app">
 
         <header class="navbar navbar-dark sticky-top bg-red flex-md-nowrap p-2 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{route('admin.dashboard')}}">BoolBnB</a>
-            <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <input class="form-control form-control-dark w-50" type="text" Placeholder="Search">
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="http://localhost:5174/">
+                <img class="img-fluid" width="100" src="img/BOOLBNB-removebg-ok.png" alt="logo_bnb">
+            </a>
+            
             <ul class="navbar-nav ml-auto d-flex flex-row ">
                 <!-- Authentication Links -->
                 @guest

@@ -79,8 +79,8 @@ class ApartmentController extends Controller
             'verify' => false
         ]);
 
-        try{
-            
+        try {
+
             // Eseguo una richiesta GET all'API di TomTom per ottenere le coordinate geografiche dell'indirizzo
             $response = $client->get('https://api.tomtom.com/search/2/geocode/' . urlencode($address) . '.json', [
                 'query' => [
@@ -115,14 +115,11 @@ class ApartmentController extends Controller
             } else {
                 return redirect()->route('admin.apartments.create')->with('message', 'Your address is incorrect');
             }
-        
-        } catch (\GuzzleHttp\Exception\RequestException $e){
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
 
             // Se si verifica un'eccezione nella richiesta, restituisci un errore con il messaggio dell'eccezione
             return redirect()->route('admin.apartments.create')->with('message', 'Your address is incorrect');
-
         }
-
     }
 
 
@@ -182,8 +179,8 @@ class ApartmentController extends Controller
             'verify' => false
         ]);
 
-        try{
-            
+        try {
+
             // Eseguo una richiesta GET all'API di TomTom per ottenere le coordinate geografiche dell'indirizzo
             $response = $client->get('https://api.tomtom.com/search/2/geocode/' . urlencode($address) . '.json', [
                 'query' => [
@@ -215,12 +212,10 @@ class ApartmentController extends Controller
             } else {
                 return redirect()->route('admin.apartments.edit',  ['apartment' => $apartment['slug']])->with('message', 'Your address is incorrect');
             }
-        
-        } catch (\GuzzleHttp\Exception\RequestException $e){
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
 
             // Se si verifica un'eccezione nella richiesta, restituisci un errore con il messaggio dell'eccezione
             return redirect()->route('admin.apartments.edit',  ['apartment' => $apartment['slug']])->with('message', 'Your address is incorrect');
-
         }
     }
 

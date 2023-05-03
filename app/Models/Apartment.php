@@ -53,4 +53,9 @@ class Apartment extends Model
         return $this->belongsToMany(Sponsorship::class);
     }
 
+    public function sponsorship()
+    {
+        return $this->hasOne(ApartmentSponsorship::class, 'apartment_id', 'id');
+    }
+
 }
